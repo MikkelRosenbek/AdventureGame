@@ -1,13 +1,13 @@
 public class Room {
 
-    private String name;
-    private String description;
+    private final String ROOMNAME;
+    private final String ROOMDESCRIPTION;
     private Room room;
     private Room north, south, east, west;
 
     public Room (String name, String description){
-        this.name = name;
-        this.description = description;
+        this.ROOMNAME = name;
+        this.ROOMDESCRIPTION = description;
     }
 
     public void setRoom(Room room) {
@@ -16,12 +16,13 @@ public class Room {
     public Room getRoom() {
         return room;
     }
-    public String getName() {
-        return name;
+    public String getROOMNAME() {
+        return ROOMNAME;
     }
-    public String getDescription() {
-        return description;
+    public String getROOMDESCRIPTION() {
+        return ROOMDESCRIPTION;
     }
+
 
     public void setNorth(Room north) {
         this.north = north;
@@ -45,6 +46,7 @@ public class Room {
     public Room getEast() {
         return east;
     }
+
 
     public void setWest(Room west) {
         this.west = west;
