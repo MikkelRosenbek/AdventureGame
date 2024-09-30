@@ -20,12 +20,39 @@ public class UserInterface {
 
             //  Switch-case som giver input (command) et output
             switch (command) {
+                case "drop" -> {
+                    System.out.println("Enter the name of the item you want to drop");
+                    String itemName = input.nextLine();
+                    Item droppedItem = adventure.drop(itemName);
+                    adventure.inventory().remove(itemName);
+                    if (droppedItem != null) {
+                        System.out.println("You have dropped " + droppedItem);
+                    }
+                }
+                case "inventory" -> {
+                    if (adventure.inventory() != null) {
+                        System.out.println("You currently have these items in tour inventory: " + adventure.inventory());
+                    } else {
+                        System.out.println("You have no items in your inventory");
+                    }
+                }
+                case "take" -> {
+                    System.out.println("Enter the name of the item to take:");
+                    String itemName = input.nextLine();
+                    Item takenItem = adventure.take(itemName);
+                    adventure.inventory().add(takenItem);
+                    if (takenItem != null) {
+                        System.out.println("You have taken " + takenItem.getItemName());
 
+                    } else {
+                        System.out.println("Item not found");
+                    }
+                }
                 case "look" -> {
                     System.out.println(adventure.look());
                 }
                 case "help" -> {
-                    System.out.println("List of commands: " + "\n\tLook" + "\n\tGo north, south, east, west" + "\n\tExit" + "\n\tHelp");
+                    System.out.println("List of commands: " + "\n\tLook" + "\n\tGo north, south, east, west" + "\ntake" + "\n\tExit" + "\n\tHelp");
                 }
                 case "exit" -> {
                     System.out.println("You are exiting the game");

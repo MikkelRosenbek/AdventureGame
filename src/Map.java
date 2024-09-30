@@ -9,7 +9,7 @@ public class Map {
 
     public void createRoom() {
 
-        //Her opretter jeg de forskellige rum og giver dem et nummer og en beskrivelse
+        //Her opretter jeg de forskellige rum og giver dem et navn og en beskrivelse
         Room room1 = new Room("The Whispering Gallery", "A long, arched hallway decorated with colorful paintings that seem to come alive with soft whispers. The gentle echoes of past conversations fill the air, while glowing orbs cast a warm light, creating an inviting and mysterious atmosphere." + "\n");
         Room room2 = new Room("The Enchanted Library", "A cozy, dimly lit room filled with towering shelves of ancient books, their spines glimmering with magic. Whispers of spells and secrets fill the air, while enchanted lanterns float gently above, casting a warm glow over the room." + "\n");
         Room room3 = new Room("The Great Hall", "The Great Hall is a majestic space with high ceilings and an enchanted ceiling reflecting the sky, filled with long wooden tables. Floating candles illuminate the room, creating a warm atmosphere as laughter and chatter fill the air." + "\n");
@@ -19,6 +19,30 @@ public class Map {
         Room room7 = new Room("The Potion Master’s Sanctum", "A dimly lit chamber filled with shelves of rare ingredients and bubbling cauldrons, each emitting mysterious vapors. The air is rich with the scent of herbs and potions, while intricate spell diagrams adorn the walls, hinting at the secrets of potion-making within." + "\n");
         Room room8 = new Room("The Enchanted Corridors", "A long, winding corridor adorned with shimmering tapestries and portraits that seem to whisper as you pass by. Soft, flickering lights illuminate the path, and the walls occasionally shift, creating a sense of wonder and mystery as you navigate through the enchanted space." + "\n");
         Room room9 = new Room("The Chamber of secrets", "A hidden, ancient chamber filled with stone walls covered in serpentine carvings and a large, ominous statue of a basilisk at its center. The air is thick with an unsettling silence, and the faint echo of dripping water adds to the atmosphere of mystery and danger." + "\n");
+
+        room1.addItemToRoom("Wand", "Description");
+        room1.addItemToRoom("item1.2", "Description");
+        room1.addItemToRoom("item1.3", "Description");
+        room1.addItemToRoom("item1.4", "Description");
+        //room1.takeItem("Item1");
+
+        //room2.addItemToRoom("item2,", "Description");
+
+        room3.addItemToRoom("item3,", "Description");
+
+        room4.addItemToRoom("item4", "Description");
+
+        room5.addItemToRoom("item5", "Description");
+
+        room6.addItemToRoom("item6", "Description");
+
+        room7.addItemToRoom("item7", "Description");
+
+        room8.addItemToRoom("item8", "Description");
+
+        room9.addItemToRoom("item9", "Description");
+
+
 
         // Herunder bliver alle rum passet op mod hinanden i de forskellige mulige retninger, som spilleren kan gå
         room1.setNorth(null);
@@ -71,4 +95,5 @@ public class Map {
     public Room getStartingRoom() {
         return startingRoom;
     }
+
 }
