@@ -2,33 +2,51 @@ import java.util.ArrayList;
 
 public class Room {
 
-    private final String ROOMNAME;
-    private final String ROOMDESCRIPTION;
-    // kan muligvis slettes        private Room room;
+    private  String roomName;
+    private String roomDescription;
     private Room north, south, east, west;
     private ArrayList<Item> itemsInRoom = new ArrayList<>();
 
     // Constructor
     public Room (String name, String description){
-        this.ROOMNAME = name;
-        this.ROOMDESCRIPTION = description;
-    }
-
-    //Methods
-//    public void setRoom(Room room) { kan slettes
-//        this.room = room;
-//    }
-//    public Room getRoom() { kan slettes
-//        return room;
-//    }
-    public String getROOMNAME() {
-        return ROOMNAME;
-    }
-    public String getROOMDESCRIPTION() {
-        return ROOMDESCRIPTION;
+        this.roomName = name;
+        this.roomDescription = description;
     }
 
 
+    public String getRoomDescription() {
+        String description = roomName + roomDescription; //Hvis der mangler roomName når beskrivelsen printes, så put roomName ind her -----------------------------------------------------------
+        if (!itemsInRoom.isEmpty()) {
+            description += "Items in this room: ";
+            for (Item item : itemsInRoom) {
+                description += "\n\t - " + item.getShortName();
+            }
+        } else {
+            description += "\n There are no items in this room";
+        }
+        return description;
+    }
+
+
+    public void addItem(Item item) {
+        itemsInRoom.add(item);
+    }
+
+
+    public Item findItem (String itemName) {
+        for (Item item : itemsInRoom) {
+            if (item.getShortName().equalsIgnoreCase(itemName)) {
+                return item;
+            }
+        }
+        return null;
+    }
+
+    public void removeItem(Item item) {
+        itemsInRoom.remove(item);
+    }
+
+    // ---------    Nord    ---------------
     public void setNorth(Room north) {
         this.north = north;
     }
@@ -36,6 +54,7 @@ public class Room {
         return north;
     }
 
+    // ---------    Syd    ---------------
     public void setSouth(Room south) {
         this.south = south;
     }
@@ -43,7 +62,7 @@ public class Room {
         return south;
     }
 
-
+    // ---------    Øst    ---------------
     public void setEast(Room east) {
         this.east = east;
     }
@@ -51,30 +70,12 @@ public class Room {
         return east;
     }
 
-
+    // ---------    Vest    ---------------
     public void setWest(Room west) {
         this.west = west;
     }
     public Room getWest() {
         return west;
-    }
-
-    public void addItemToRoom(String itemName, String itemDescription) {
-        itemsInRoom.add(new Item(itemName, itemDescription)); //new Item giver adgang til data fra Item-klassen
-    }
-
-    public ArrayList<Item> getItemsInRoom() {
-        return itemsInRoom;
-    }
-
-    public Item takeItem(String itemName) {
-        for (Item item : new ArrayList<>(itemsInRoom)) {
-            if (item.getItemName().equalsIgnoreCase(itemName)) {
-                itemsInRoom.remove(item);
-                return item;
-            }
-        }
-        return null;
     }
 
 

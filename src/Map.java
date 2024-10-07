@@ -4,10 +4,10 @@ public class Map {
     private Room startingRoom;
 
     public Map() {
-        createRoom();
+        createRooms();
     }
 
-    public void createRoom() {
+    public Room createRooms() {
 
         //Her opretter jeg de forskellige rum og giver dem et navn og en beskrivelse
         Room room1 = new Room("The Whispering Gallery", "A long, arched hallway decorated with colorful paintings that seem to come alive with soft whispers. The gentle echoes of past conversations fill the air, while glowing orbs cast a warm light, creating an inviting and mysterious atmosphere." + "\n");
@@ -20,80 +20,71 @@ public class Map {
         Room room8 = new Room("The Enchanted Corridors", "A long, winding corridor adorned with shimmering tapestries and portraits that seem to whisper as you pass by. Soft, flickering lights illuminate the path, and the walls occasionally shift, creating a sense of wonder and mystery as you navigate through the enchanted space." + "\n");
         Room room9 = new Room("The Chamber of secrets", "A hidden, ancient chamber filled with stone walls covered in serpentine carvings and a large, ominous statue of a basilisk at its center. The air is thick with an unsettling silence, and the faint echo of dripping water adds to the atmosphere of mystery and danger." + "\n");
 
-        room1.addItemToRoom("Wand", "Description");
-        room1.addItemToRoom("item1.2", "Description");
-        room1.addItemToRoom("item1.3", "Description");
-        room1.addItemToRoom("item1.4", "Description");
-        //room1.takeItem("Item1");
+// ------ Items -------------------------------------------
+        room1.addItem(new Item("Map", "Enchanted map of mysteries"));
+        room4.addItem(new Item("Lantern", "The eternal flame lantern"));
+        room5.addItem(new Item("Wand", "Magic wand"));
+        room7.addItem(new Item("Hourglass", "Timekeeper's hourglass"));
 
-        //room2.addItemToRoom("item2,", "Description");
-
-        room3.addItemToRoom("item3,", "Description");
-
-        room4.addItemToRoom("item4", "Description");
-
-        room5.addItemToRoom("item5", "Description");
-
-        room6.addItemToRoom("item6", "Description");
-
-        room7.addItemToRoom("item7", "Description");
-
-        room8.addItemToRoom("item8", "Description");
-
-        room9.addItemToRoom("item9", "Description");
+// ----- Food -------------------------------
+        room2.addItem(new Food("Elixir", "A potion that gives you health", 90));
+        room4.addItem(new Food("Wine", "A glass of whine that is not safe to drink", -25));
+        room6.addItem(new Food("Pastries", "Magical pastries made by magical Pixies", 30));
 
 
 
         // Herunder bliver alle rum passet op mod hinanden i de forskellige mulige retninger, som spilleren kan gå
-        room1.setNorth(null);
+        //room1.setNorth(null);
         room1.setSouth(room4);
         room1.setEast(room2);
-        room1.setWest(null);
+        //room1.setWest(null);
 
-        room2.setNorth(null);
-        room2.setSouth(null);
+        //room2.setNorth(null);
+        //room2.setSouth(null);
         room2.setEast(room3);
         room2.setWest(room1);
 
-        room3.setNorth(null);
+        //room3.setNorth(null);
         room3.setSouth(room6);
-        room3.setEast(null);
+        //room3.setEast(null);
         room3.setWest(room2);
 
         room4.setNorth(room1);
         room4.setSouth(room7);
-        room4.setEast(null);
-        room4.setWest(null);
+        //room4.setEast(null);
+        //room4.setWest(null);
 
-        room5.setNorth(null);
+        //room5.setNorth(null);
         room5.setSouth(room8);
-        room5.setEast(null);
-        room5.setWest(null);
+        //room5.setEast(null);
+        //room5.setWest(null);
 
         room6.setNorth(room3);
         room6.setSouth(room9);
-        room6.setEast(null);
-        room6.setWest(null);
+        //room6.setEast(null);
+        //room6.setWest(null);
 
         room7.setNorth(room4);
-        room7.setSouth(null);
+        //room7.setSouth(null);
         room7.setEast(room8);
-        room7.setWest(null);
+        //room7.setWest(null);
 
         room8.setNorth(room5);
-        room8.setSouth(null);
+        //room8.setSouth(null);
         room8.setEast(room9);
         room8.setWest(room7);
 
         room9.setNorth(room6);
-        room9.setSouth(null);
-        room9.setEast(null);
+        //room9.setSouth(null);
+        //room9.setEast(null);
         room9.setWest(room8);
 
-        startingRoom = room1;
+       // startingRoom = room1;
+        return room1;
     }
-    public Room getStartingRoom() {
-        return startingRoom;
-    }
+
+//    public Room getStartingRoom() {
+//        return startingRoom;
+//    }
 
 }

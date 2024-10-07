@@ -1,23 +1,21 @@
 public class Item {
 
-    private String itemName;
-    private String itemDescription;
+    private String shortName;
+    private String longName;
 
-    public Item(String itemName, String itemDescibtion) {
-        this.itemName = itemName;
-        this.itemDescription = itemDescibtion;
+
+
+    public Item(String shortName, String longName) {
+        this.shortName = shortName;
+        this.longName = longName;
     }
 
-    public String getItemName() {
-        return itemName;
+    public String getShortName() {
+        return shortName;
     }
 
-    public String getItemDescription() {
-        return itemDescription;
+    public String getLongName() {
+        return longName;
     }
 
-    @Override
-    public String toString() {
-        return itemName + " " + itemDescription;
-    }
 }
