@@ -27,6 +27,7 @@ public class Adventure {
             String[] word = userInput.split(" "); // Forklar hvad et String.split gør --------------------------------
             String command = word[0].toLowerCase(Locale.ROOT); // Forklar hvad fanden det her er ---------------------------------------
 
+
             //  Switch-case som giver input(command) et output ---------------------------------------------------------------------------------------------
             switch (command) {
                 case "exit"-> {
@@ -34,7 +35,7 @@ public class Adventure {
                     return;
                 }
                 case "help" -> {
-                    userInterface.print("List of commands: " + "\n\t-Look" + "\n\t-Go north, south, east, west" + "\n\t-take" + "\n\t-Exit" + "\n\t-Help");
+                    userInterface.print("List of commands: " + "\n\t-Look" + "\n\t-Go north, south, east, west" + "\n\t-take" + "\n\t-Exit" + "\n\t-Help" + "\n\t-drop" + "\n\t-inventory, inv, i" + "\n\t-Equip" + "\n\t-health");
                 }
                 case "look" -> {
                     userInterface.print(player.getCurrentRoom().getRoomDescription());
@@ -59,7 +60,7 @@ public class Adventure {
                         userInterface.print(player.dropItem(word[1]));
                     }
                 }
-                case "inventory", "inv" -> {
+                case "inventory", "inv", "i" -> {
                     userInterface.print(player.showInventory());
                 }
                 case "health" -> {
@@ -70,9 +71,28 @@ public class Adventure {
                         userInterface.print(player.eat(word[1]));
                     }
                 }
+                case "equip" -> {
+                    if (word.length > 1) {
+                        userInterface.print(player.equipWeapon(word[1]));
+                    } else {
+                        userInterface.print("Please specify the weapon you want to equip");
+                    }
+                }
+                case "attack" -> {
+                    if (word.length > 1) {
+                        userInterface.print(player.attack(word[1]));
+                        } else {
+                            userInterface.print(player.attack(""));
+                        }
+
+                }
                 default ->
                     System.out.println("Unknown command. type help to see your options");
                     // Kan erstattes til userInterface.print("Unknown command. type help to see your options"); -----------------------------------------------
+            }
+            if (player.getHealth() <= 0) {
+                userInterface.print("Game over - You lost");
+                running = false;
             }
         }
     }

@@ -6,11 +6,14 @@ public class Room {
     private String roomDescription;
     private Room north, south, east, west;
     private ArrayList<Item> itemsInRoom = new ArrayList<>();
+    private ArrayList<Enemy> enemiesInRoom = new ArrayList<>();
 
     // Constructor
     public Room (String name, String description){
         this.roomName = name;
         this.roomDescription = description;
+        this.itemsInRoom = new ArrayList<>();
+        this.enemiesInRoom = new ArrayList<>();
     }
 
 
@@ -19,10 +22,16 @@ public class Room {
         if (!itemsInRoom.isEmpty()) {
             description += "Items in this room: ";
             for (Item item : itemsInRoom) {
-                description += "\n\t - " + item.getShortName();
+                description += "\n\t - " + item.getLongName();
             }
         } else {
             description += "\n There are no items in this room";
+        }
+        if (!enemiesInRoom.isEmpty()) {
+            description += "\n\nEnemies in this room: ";
+            for (Enemy enemy : enemiesInRoom) {
+                description += "\n\t - " + enemy.getEnemyName() + " - " + enemy.getEnemyDescription() + " - " + enemy.getEnemyHealth();
+            }
         }
         return description;
     }
@@ -44,6 +53,27 @@ public class Room {
 
     public void removeItem(Item item) {
         itemsInRoom.remove(item);
+    }
+
+    public void addEnemy (Enemy enemy) {
+        enemiesInRoom.add(enemy);
+    }
+
+    public ArrayList<Enemy> getEnemiesInRoom() {
+        return enemiesInRoom;
+    }
+
+    public Enemy findEnemy (String enemyName) {
+        for (Enemy enemy : enemiesInRoom) {
+            if (enemy.getEnemyName().equalsIgnoreCase(enemyName)) {
+                return enemy;
+            }
+        }
+        return null;
+    }
+
+    public void removeEnemy(Enemy enemy) {
+        enemiesInRoom.remove(enemy);
     }
 
     // ---------    Nord    ---------------

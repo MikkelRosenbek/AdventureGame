@@ -1,7 +1,6 @@
 //Creator - Klassen, som opretter rummene og kæder dem sammen
 public class Map {
 
-    private Room startingRoom;
 
     public Map() {
         createRooms();
@@ -23,13 +22,22 @@ public class Map {
 // ------ Items -------------------------------------------
         room1.addItem(new Item("Map", "Enchanted map of mysteries"));
         room4.addItem(new Item("Lantern", "The eternal flame lantern"));
-        room5.addItem(new Item("Wand", "Magic wand"));
+        //room5.addItem(new Item("Wand", "Magic wand"));
         room7.addItem(new Item("Hourglass", "Timekeeper's hourglass"));
 
 // ----- Food -------------------------------
         room2.addItem(new Food("Elixir", "A potion that gives you health", 90));
         room4.addItem(new Food("Wine", "A glass of whine that is not safe to drink", -25));
         room6.addItem(new Food("Pastries", "Magical pastries made by magical Pixies", 30));
+
+// ----- Weapon -------------------------------
+        room1.addItem(new MeleeWeapon("Sword", "Magic Sword of fire", 25, 0));
+        room1.addItem(new RangedWeapon("Wand", "Magic wand", 15, 2));
+
+// ----- Enemy -------------------------------
+        room1.addEnemy(new Enemy("Werewolf", "EnemyDescription", 200, new MeleeWeapon("Axe", "Axe of death", 10, -1)));
+        room1.addEnemy(new Enemy("Enemy2", "EnemyDescription", 135, new MeleeWeapon("Stick", "Stick of wood", 15, -1)));
+        room1.addEnemy(new Enemy("Enemy3", "EnemyDescription", 75, new MeleeWeapon("Gun", "Peew Peew", 45, 2)));
 
 
 
@@ -79,12 +87,7 @@ public class Map {
         //room9.setEast(null);
         room9.setWest(room8);
 
-       // startingRoom = room1;
+
         return room1;
     }
-
-//    public Room getStartingRoom() {
-//        return startingRoom;
-//    }
-
 }
